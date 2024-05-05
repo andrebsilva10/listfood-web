@@ -1,3 +1,17 @@
-.color_background {
-  background-color: #ffffff !important;
+@import '../styles.scss';
+
+.navbar {
+  border-top: 10px solid $primary-color;
+  background-color: $primary-gray;
+  color: $text-color;
+
+  a{
+    &:hover{
+      color: $primary-color;
+    }
+    &:active{
+      color: $primary-color!important;
+      background-color: $primary-gray!important;
+    }
+  }
 }
