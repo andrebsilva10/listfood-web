@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-$primary-color: #00B7C6;
-$text-color: #484C52;
-$primary-gray: #F5F6F7;
+@import url('https://fonts.cdnfonts.com/css/minimo');
 
-.cor-primaria {
-  background-color: #ffffff;
+* {
+  font-family: 'Minimo', sans-serif;
 }
 
-.color-background {
-  background-color: #fcfcfc !important;
+$primary-color: oklch(var(--p));
+$text-color: #484C52;
+$primary-gray: oklch(var(--b2));
+$bg-white: #f5f5f5;
+
+.input {
+  height: 2.2rem;
 }
