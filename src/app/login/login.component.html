@@ -1,9 +1,14 @@
 <div>
-  <form class="card-body gap-5">
+  <form class="card-body gap-5" (ngSubmit)="login()">
     <h2 class="card-title mb-4 text-2xl">Entrar</h2>
-    <label
-      for="username"
-      class="input input-sm input-bordered rounded flex items-center gap-2"
+
+    <app-input-text
+      label="Usuário"
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Usuário"
+      [(value)]="username"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -15,18 +20,15 @@
           d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
         />
       </svg>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        class="grow"
-        placeholder="Usuário"
-        [(ngModel)]="username"
-      />
-    </label>
-    <label
-      for="password"
-      class="input input-sm input-bordered rounded flex items-center gap-2"
+    </app-input-text>
+
+    <app-input-text
+      label="Senha"
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Senha"
+      [(value)]="password"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -40,19 +42,12 @@
           clip-rule="evenodd"
         />
       </svg>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        class="grow"
-        placeholder="Senha"
-        [(ngModel)]="password"
-      />
-    </label>
+    </app-input-text>
+
     <div class="card justify-center mt-4">
       <button
+        type="submit"
         class="btn btn-sm btn-primary rounded text-base-100"
-        (click)="login()"
       >
         Entrar
       </button>

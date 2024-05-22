@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { InputTextComponent } from '../shared/input-text/input-text.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, InputTextComponent, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   username: string = '';
@@ -15,7 +16,7 @@ export class LoginComponent {
   loginMessage: string = '';
 
   login(): void {
-    if (this.username === '' || this.password === '') {
+    if (this.username.trim() === '' || this.password.trim() === '') {
       this.loginMessage = 'Por favor, preencha os campos de usuário e senha';
       return;
     }

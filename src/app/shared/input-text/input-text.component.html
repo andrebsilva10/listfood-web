@@ -1,0 +1,15 @@
+<label
+  [for]="id"
+  class="input input-sm input-bordered rounded flex items-center gap-2"
+>
+  <ng-content></ng-content>
+  <input
+    [type]="type"
+    [id]="id"
+    [name]="name"
+    class="grow"
+    [placeholder]="placeholder"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
+  />
+</label>
