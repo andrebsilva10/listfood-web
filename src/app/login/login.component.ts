@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextComponent } from '../shared/input-text/input-text.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonPrimaryComponent } from '../shared/button-primary/button-primary.component';
 import { FormComponent } from '../shared/form/form.component';
 import { ToastrService } from 'ngx-toastr';
@@ -20,15 +20,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private toastr: ToastrService) {}
-
   username: string = '';
   password: string = '';
 
-  login(): void {
+  constructor(private router: Router, private toastr: ToastrService) {}
+
+  login() {
     if (this.username.trim() === '' || this.password.trim() === '') {
       this.toastr.error('Preencha os campos corretamente.');
       return;
     }
+  }
+
+  goToSignUp() {
+    this.router.navigate(['/cadastrar-se', { username: this.username }]);
   }
 }
