@@ -2,4 +2,14 @@
   <app-navbar></app-navbar>
 </header>
 
-<app-footer></app-footer>
+<main class="container mx-auto flex items-center justify-center h-screen">
+  <div class="shadow-md rounded bg-base-100 w-full flex justify-center">
+    <div class="py-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <app-footer></app-footer>
+</footer>
