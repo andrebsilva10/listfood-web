@@ -1,6 +1,7 @@
 <label
   [for]="id"
   class="input input-sm input-bordered rounded flex items-center gap-2"
+  [ngClass]="{ 'input-error': !isValid && interacted }"
 >
   <ng-content></ng-content>
   <input
@@ -9,7 +10,14 @@
     [name]="name"
     class="grow"
     [placeholder]="placeholder"
-    [ngModel]="value"
+    [(ngModel)]="value"
     (ngModelChange)="onValueChange($event)"
+    [attr.pattern]="pattern"
+    [required]="required"
+    (blur)="onBlur()"
   />
+  <span *ngIf="!isValid && interacted" class="badge badge-error">!</span>
 </label>
+<span *ngIf="!isValid && interacted" class="label-text-alt text-error">{{
+  errorMessage
+}}</span>

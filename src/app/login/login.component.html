@@ -6,6 +6,7 @@
     name="username"
     placeholder="Usuário"
     [(value)]="username"
+    pattern="^[a-zA-Z0-9_]{5,}$"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +27,7 @@
     name="password"
     placeholder="Senha"
     [(value)]="password"
+    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +48,7 @@
   <p class="mx-auto">
     <span class="text-sm">
       Não é membro?
-      <a (click)="goToSignUp()">
+      <a (click)="goToSignUp()" class="cursor-pointer">
         <strong>Cadastre-se aqui</strong>
       </a>
     </span>
