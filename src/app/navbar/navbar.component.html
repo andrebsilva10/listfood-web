@@ -1,13 +1,24 @@
 <nav class="navbar fixed top-0 bg-base-200 z-10">
   <div class="container mx-auto justify-between">
     <div>
-      <a href=""
-        ><img src="../../assets/img/logo-fundo-claro.png" alt="Logo"
-      /></a>
+      <a routerLink="/">
+        <img src="../../assets/img/logo-fundo-claro.png" alt="Logo" />
+      </a>
     </div>
     <div class="menu">
-      <ul class="flex">
-        <li><a [routerLink]="['/login']">Entrar</a></li>
+      <ul class="flex gap-3">
+        <li *ngIf="!isLoggedIn"><a [routerLink]="['/login']">Entrar</a></li>
+        <li *ngIf="!isLoggedIn">
+          <a [routerLink]="['/cadastrar-se']">Cadastrar-se</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a [routerLink]="['/inicio']">Inicio</a>
+        </li>
+        <li *ngIf="isLoggedIn"><a [routerLink]="['/listas']">Listas</a></li>
+        <li *ngIf="isLoggedIn">
+          <a [routerLink]="['/configuracoes']">Configurações</a>
+        </li>
+        <li *ngIf="isLoggedIn"><a (click)="logout()">Sair</a></li>
       </ul>
     </div>
   </div>

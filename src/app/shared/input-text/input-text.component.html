@@ -15,6 +15,11 @@
     [attr.pattern]="pattern"
     [required]="required"
     (blur)="onBlur()"
+    [mask]="mask"
+    [prefix]="prefix"
+    [thousandSeparator]="thousandSeparator"
+    [decimalMarker]="decimalMarker"
+    [dropSpecialCharacters]="dropSpecialCharacters"
   />
   <span *ngIf="!isValid && interacted" class="badge badge-error">!</span>
 </label>
