@@ -22,4 +22,16 @@ export class ListaService {
   getListasByUserId(userId: string): Observable<Lista[]> {
     return this.apiService.getListasByUserId(userId);
   }
+
+  removeLista(id: string): Observable<void> {
+    return this.apiService.removeLista(id);
+  }
+
+  getListaById(id: string): Observable<Lista> {
+    return this.apiService.getListaById(id);
+  }
+
+  updateLista(id: string, lista: Lista): Observable<Lista> {
+    return this.apiService.updateLista(id, lista);
+  }
 }

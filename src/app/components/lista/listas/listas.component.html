@@ -1,17 +1,20 @@
-<div class="col-12 text-start mb-20">
+<div class="text-start mb-20">
   <p class="font-bold text-3xl">Listas</p>
 </div>
 
-<div *ngIf="listas.length === 0" class="col-12 sm:flex gap-32 items-center">
+<div
+  *ngIf="listas.length === 0"
+  class="sm:flex gap-32 items-center justify-center"
+>
   <div class="col-6 mb-10">
     <img src="../../assets/img/img_sem_listas.svg" alt="Lupa de pesquisa" />
   </div>
   <div class="col-6 flex flex-col gap-10 sm:gap-28">
-    <h1 class="font-bold text-3xl col-12">Sem listas no momento!</h1>
+    <h1 class="font-bold text-3xl">Sem listas no momento!</h1>
 
     <a
       [routerLink]="['/cadastro-lista']"
-      class="btn btn-primary text-base-100 font-bold text-lg col-12 w-full"
+      class="btn btn-primary text-base-100 font-bold text-lg w-full"
       >Cadastrar Lista</a
     >
   </div>
@@ -46,13 +49,19 @@
         </td>
         <th>
           <div class="join join-vertical md:join-horizontal">
-            <button class="btn join-item btn-sm btn-success text-base-100">
-              Iniciar
+            <button class="btn join-item btn-sm btn-info text-base-100">
+              Detalhes
             </button>
-            <button class="btn join-item btn-sm btn-primary text-base-100">
+            <button
+              class="btn join-item btn-sm btn-secondary text-base-100"
+              [routerLink]="['/cadastro-lista', lista.id]"
+            >
               Editar
             </button>
-            <button class="btn join-item btn-sm btn-error text-base-100">
+            <button
+              class="btn join-item btn-sm btn-error text-base-100"
+              (click)="abrirModalRemover(lista)"
+            >
               Excluir
             </button>
           </div>
@@ -68,4 +77,29 @@
       </tr>
     </tfoot>
   </table>
+
+  <div class="flex justify-start md:justify-center mt-10 w-full">
+    <a
+      [routerLink]="['/cadastro-lista']"
+      class="btn btn-primary text-base-100 font-bold"
+      >Cadastrar Lista</a
+    >
+  </div>
 </div>
+
+<dialog id="modal-remover" class="modal modal-bottom sm:modal-middle">
+  <form method="dialog" class="modal-box">
+    <h3 class="font-bold text-lg">Confirmar remoção</h3>
+    <p class="py-4">
+      Tem certeza que deseja remover a lista "{{ listaParaRemover?.nome }}"?
+    </p>
+    <div class="modal-action">
+      <button class="btn btn-outline" (click)="fecharModalRemover()">
+        Cancelar
+      </button>
+      <button class="btn btn-error text-base-100" (click)="confirmarRemover()">
+        Sim, remover
+      </button>
+    </div>
+  </form>
+</dialog>

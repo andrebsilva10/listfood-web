@@ -1,4 +1,7 @@
-<app-form [title]="'Cadastrar Lista'" (submitEvent)="cadastrarLista()">
+<app-form
+  [title]="isEditing ? 'Editar Lista' : 'Cadastrar Lista'"
+  (submitEvent)="salvarLista()"
+>
   <app-input-text
     id="nomeLista"
     name="nomeLista"
@@ -48,6 +51,8 @@
     </svg>
     <span class="ml-2">R$</span>
   </app-input-text>
-
-  <app-button-primary text="Salvar" type="submit"></app-button-primary>
+  <app-button-primary
+    [text]="isEditing ? 'Atualizar' : 'Cadastrar'"
+    type="submit"
+  ></app-button-primary>
 </app-form>

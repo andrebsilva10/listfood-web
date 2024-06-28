@@ -32,4 +32,16 @@ export class ApiService {
   getListasByUserId(userId: string): Observable<Lista[]> {
     return this.http.get<Lista[]>(`${this.apiUrl}/listas?userId=${userId}`);
   }
+
+  removeLista(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/listas/${id}`);
+  }
+
+  getListaById(id: string): Observable<Lista> {
+    return this.http.get<Lista>(`${this.apiUrl}/listas/${id}`);
+  }
+
+  updateLista(id: string, lista: Lista): Observable<Lista> {
+    return this.http.put<Lista>(`${this.apiUrl}/listas/${id}`, lista);
+  }
 }

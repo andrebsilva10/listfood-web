@@ -18,39 +18,21 @@
   ],
   "listas": [
     {
-      "id": "f29d",
-      "nome": "Lista 123",
-      "saldo": 54654,
-      "userId": "1"
+      "id": "5e35",
+      "nome": "Lista de teste",
+      "saldo": 234234,
+      "userId": "2"
     },
     {
-      "id": "fb20",
-      "nome": "asdsa",
-      "saldo": 62,
-      "userId": "1"
-    },
-    {
-      "id": "0477",
       "nome": "asdasd",
-      "saldo": 563.26,
-      "userId": "1"
+      "saldo": 654,
+      "userId": "1",
+      "id": "62cd"
     },
     {
-      "id": "691e",
-      "nome": "fghfgh",
-      "saldo": 5623323.32,
-      "userId": "1"
-    },
-    {
-      "id": "afe7",
-      "nome": "Lista teste",
-      "saldo": 123,
-      "userId": "1"
-    },
-    {
-      "id": "23d3",
-      "nome": "asda",
-      "saldo": 123,
+      "id": "3088",
+      "nome": "Lista criada agora",
+      "saldo": 43345345,
       "userId": "1"
     }
   ]
