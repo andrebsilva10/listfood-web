@@ -6,6 +6,7 @@ import { ProdutoService, Produto } from '../../../services/produto.service';
 import { ListaService, Lista } from '../../../services/lista.service';
 import { CurrencyFormatPipe } from '../../../pipes/currency-format';
 import { FormsModule } from '@angular/forms';
+import { EstadoListaService } from '../../../services/estado-lista.service';
 
 @Component({
   selector: 'app-detalhes-lista',
@@ -25,14 +26,21 @@ export class DetalhesListaComponent implements OnInit {
     private route: ActivatedRoute,
     private produtoService: ProdutoService,
     private listaService: ListaService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private estadoListaService: EstadoListaService
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const listaId = params['id'];
       if (listaId) {
-        this.carregarLista(listaId);
+        const listaDoEstado = this.estadoListaService.getLista(listaId);
+        if (listaDoEstado) {
+          this.lista = listaDoEstado;
+          this.valorDisponivel = this.lista.valorDisponivel ?? this.lista.saldo;
+        } else {
+          this.carregarLista(listaId);
+        }
         this.carregarProdutos(listaId);
       }
     });
@@ -129,21 +137,21 @@ export class DetalhesListaComponent implements OnInit {
 
   salvarValorDisponivel() {
     if (this.lista && this.lista.id) {
-      this.listaService
-        .updateLista(this.lista.id, {
-          ...this.lista,
-          valorDisponivel: this.valorDisponivel,
-        })
-        .subscribe(
-          () => {
-            if (this.valorDisponivel < 0) {
-              this.toastrService.warning('O valor disponível está negativo!');
-            }
-          },
-          (error) => {
-            console.error('Erro ao salvar valor disponível:', error);
+      const listaAtualizada = {
+        ...this.lista,
+        valorDisponivel: this.valorDisponivel,
+      };
+      this.listaService.updateLista(this.lista.id, listaAtualizada).subscribe(
+        (listaAtualizada) => {
+          this.estadoListaService.atualizarLista(listaAtualizada);
+          if (this.valorDisponivel < 0) {
+            this.toastrService.warning('O valor disponível está negativo!');
           }
-        );
+        },
+        (error) => {
+          console.error('Erro ao salvar valor disponível:', error);
+        }
+      );
     }
   }
 
@@ -167,6 +175,7 @@ export class DetalhesListaComponent implements OnInit {
       if (this.valorDisponivel < 0) {
         this.toastrService.warning('O valor disponível está negativo!');
       }
+      this.salvarValorDisponivel();
     }
   }
 

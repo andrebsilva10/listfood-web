@@ -6,6 +6,7 @@ import { CurrencyFormatPipe } from '../../../pipes/currency-format';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
 import { of, switchMap } from 'rxjs';
+import { EstadoListaService } from '../../../services/estado-lista.service';
 
 @Component({
   selector: 'app-listas',
@@ -24,10 +25,14 @@ export class ListasComponent implements OnInit {
   constructor(
     private listaService: ListaService,
     private toastrService: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private estadoListaService: EstadoListaService
   ) {}
 
   ngOnInit() {
+    this.estadoListaService.listas$.subscribe((listas) => {
+      this.listas = listas;
+    });
     this.carregarListas();
   }
 
@@ -46,13 +51,14 @@ export class ListasComponent implements OnInit {
       )
       .subscribe(
         (listas) => {
-          this.listas = listas.map((lista) => ({
+          const listasAtualizadas = listas.map((lista) => ({
             ...lista,
             valorDisponivel:
               lista.valorDisponivel !== undefined
                 ? lista.valorDisponivel
                 : lista.saldo,
           }));
+          this.estadoListaService.atualizarListas(listasAtualizadas);
         },
         (error) => {
           this.toastrService.error('Erro ao carregar listas');
