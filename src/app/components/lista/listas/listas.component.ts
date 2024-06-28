@@ -10,6 +10,9 @@ import { CurrencyFormatPipe } from '../../../pipes/currency-format';
   styleUrls: ['./listas.component.scss'],
   standalone: true,
   imports: [CommonModule, RouterModule, CurrencyFormatPipe],
+  host: {
+    class: 'w-full',
+  },
 })
 export class ListasComponent implements OnInit {
   listas: Lista[] = [];
