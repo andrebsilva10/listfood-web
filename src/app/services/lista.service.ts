@@ -7,6 +7,7 @@ export interface Lista {
   nome: string;
   saldo: number;
   userId: string;
+  valorDisponivel?: number;
 }
 
 @Injectable({

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { User } from './user.service';
 import { Lista } from './lista.service';
+import { Produto } from './produto.service';
 
 @Injectable({
   providedIn: 'root',
@@ -43,5 +44,27 @@ export class ApiService {
 
   updateLista(id: string, lista: Lista): Observable<Lista> {
     return this.http.put<Lista>(`${this.apiUrl}/listas/${id}`, lista);
+  }
+
+  createProduto(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(`${this.apiUrl}/produtos`, produto);
+  }
+
+  getProdutosByListaId(listaId: string): Observable<Produto[]> {
+    return this.http.get<Produto[]>(
+      `${this.apiUrl}/produtos?listaId=${listaId}&_sort=id`
+    );
+  }
+
+  removeProduto(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/produtos/${id}`);
+  }
+
+  getProdutoById(id: string): Observable<Produto> {
+    return this.http.get<Produto>(`${this.apiUrl}/produtos/${id}`);
+  }
+
+  updateProduto(id: string, produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${this.apiUrl}/produtos/${id}`, produto);
   }
 }

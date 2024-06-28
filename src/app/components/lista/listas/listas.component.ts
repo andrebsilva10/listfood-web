@@ -46,7 +46,13 @@ export class ListasComponent implements OnInit {
       )
       .subscribe(
         (listas) => {
-          this.listas = listas;
+          this.listas = listas.map((lista) => ({
+            ...lista,
+            valorDisponivel:
+              lista.valorDisponivel !== undefined
+                ? lista.valorDisponivel
+                : lista.saldo,
+          }));
         },
         (error) => {
           this.toastrService.error('Erro ao carregar listas');

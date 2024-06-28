@@ -7,6 +7,7 @@ import { InputTextComponent } from '../../shared/input-text/input-text.component
 import { ButtonPrimaryComponent } from '../../shared/button-primary/button-primary.component';
 import { ListaService, Lista } from '../../../services/lista.service';
 import { UserService } from '../../../services/user.service';
+import { convertToNumber } from '../../../utils/number-utils';
 
 @Component({
   selector: 'app-cadastro-lista',
@@ -60,7 +61,7 @@ export class CadastroListaComponent implements OnInit {
   salvarLista() {
     this.userService.getCurrentUser().subscribe((user) => {
       if (user) {
-        const saldoNumerico = this.convertToNumber(this.saldoLista);
+        const saldoNumerico = convertToNumber(this.saldoLista);
         if (isNaN(saldoNumerico)) {
           this.toastr.error('Saldo inválido');
           return;
@@ -69,6 +70,7 @@ export class CadastroListaComponent implements OnInit {
           nome: this.nomeLista,
           saldo: saldoNumerico,
           userId: user.id,
+          valorDisponivel: saldoNumerico,
         };
 
         if (this.isEditing && this.listaId !== null) {
@@ -103,10 +105,5 @@ export class CadastroListaComponent implements OnInit {
 
   onSaldoListaChange(value: string) {
     this.saldoLista = value;
-  }
-
-  private convertToNumber(value: string): number {
-    const cleanedValue = value.replace(/[^\d,]/g, '').replace(',', '.');
-    return parseFloat(cleanedValue);
   }
 }

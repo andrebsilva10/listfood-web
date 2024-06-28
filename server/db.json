@@ -18,22 +18,55 @@
   ],
   "listas": [
     {
-      "id": "5e35",
-      "nome": "Lista de teste",
-      "saldo": 234234,
+      "nome": "Compras de Julho",
+      "saldo": 1234,
+      "userId": "1",
+      "valorDisponivel": 1234,
+      "id": "3c85"
+    },
+    {
+      "nome": "Lista para festa",
+      "saldo": 1000,
+      "userId": "2",
+      "id": "9eca"
+    },
+    {
+      "id": "193e",
+      "nome": "Compras para menininha",
+      "saldo": 20000,
       "userId": "2"
     },
     {
-      "nome": "asdasd",
-      "saldo": 654,
-      "userId": "1",
-      "id": "62cd"
+      "id": "1dd0",
+      "nome": "Lista para o menininho",
+      "saldo": 10,
+      "userId": "2"
+    }
+  ],
+  "produtos": [
+    {
+      "nome": "Bolacha",
+      "valor": 5,
+      "quantidade": 3,
+      "listaId": "3c85",
+      "id": "5727",
+      "selecionado": false
     },
     {
-      "id": "3088",
-      "nome": "Lista criada agora",
-      "saldo": 43345345,
-      "userId": "1"
+      "nome": "Coca",
+      "valor": 12,
+      "quantidade": 4,
+      "listaId": "3c85",
+      "id": "c445",
+      "selecionado": true
+    },
+    {
+      "id": "f96b",
+      "nome": "Coca",
+      "valor": 10,
+      "quantidade": 1000,
+      "listaId": "3c85",
+      "selecionado": true
     }
   ]
 }

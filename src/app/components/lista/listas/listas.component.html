@@ -6,10 +6,10 @@
   *ngIf="listas.length === 0"
   class="sm:flex gap-32 items-center justify-center"
 >
-  <div class="col-6 mb-10">
+  <div class="mb-10">
     <img src="../../assets/img/img_sem_listas.svg" alt="Lupa de pesquisa" />
   </div>
-  <div class="col-6 flex flex-col gap-10 sm:gap-28">
+  <div class="flex flex-col gap-10 sm:gap-28">
     <h1 class="font-bold text-3xl">Sem listas no momento!</h1>
 
     <a
@@ -24,32 +24,33 @@
   <table class="table">
     <thead>
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <th>Nome</th>
         <th>Saldo</th>
+        <th>Valor disponível</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let lista of listas">
-        <th>
-          <label>
-            <input type="checkbox" class="checkbox" />
-          </label>
-        </th>
         <td id="nomeLista">
           <div>{{ lista.nome }}</div>
         </td>
         <td id="saldoLista">
           <span>R$ {{ lista.saldo | currencyFormat }}</span>
         </td>
+        <td id="valorDisponivel">
+          <span
+            [ngClass]="{ 'text-red-500': (lista.valorDisponivel ?? 0) < 0 }"
+          >
+            R$ {{ lista.valorDisponivel ?? lista.saldo | currencyFormat }}
+          </span>
+        </td>
         <th>
           <div class="join join-vertical md:join-horizontal">
-            <button class="btn join-item btn-sm btn-info text-base-100">
+            <button
+              class="btn join-item btn-sm btn-info text-base-100"
+              [routerLink]="['/detalhes-lista', lista.id]"
+            >
               Detalhes
             </button>
             <button
@@ -70,9 +71,9 @@
     </tbody>
     <tfoot>
       <tr>
-        <th></th>
         <th>Nome</th>
         <th>Saldo</th>
+        <th>Valor disponível</th>
         <th>Ações</th>
       </tr>
     </tfoot>
