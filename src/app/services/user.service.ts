@@ -4,7 +4,7 @@ import { ApiService } from './api.service';
 import { StorageService } from './storage.service';
 
 export interface User {
-  id: number;
+  id: string;
   username: string;
   password: string;
 }

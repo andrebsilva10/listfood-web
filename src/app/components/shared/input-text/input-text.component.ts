@@ -19,11 +19,11 @@ export class InputTextComponent implements OnInit {
   @Input() pattern?: string;
   @Input() value: string = '';
   @Input() errorMessage: string = '';
-  @Input() mask?: string = ''; // Propriedade para a máscara
-  @Input() prefix: string = ''; // Propriedade para o prefixo
-  @Input() thousandSeparator: string = ''; // Propriedade para o separador de milhar
-  @Input() decimalMarker: any; // Propriedade para o marcador decimal
-  @Input() dropSpecialCharacters: boolean = false; // Propriedade para remover caracteres especiais
+  @Input() mask?: string = '';
+  @Input() prefix: string = '';
+  @Input() thousandSeparator: string = '';
+  @Input() decimalMarker: any;
+  @Input() dropSpecialCharacters: boolean = false;
 
   @Output() valueChange = new EventEmitter<any>();
 

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { CadastrarSeComponent } from './cadastrar-se/cadastrar-se.component';
+import { CadastrarSeComponent } from './components/admin/cadastrar-se/cadastrar-se.component';
 
 import { authGuard } from './guards/auth.guard';
-import { ListasComponent } from './listas/listas.component';
-import { CadastroListaComponent } from './cadastro-lista/cadastro-lista.component';
+import { ListasComponent } from './components/lista/listas/listas.component';
+import { CadastroListaComponent } from './components/lista/cadastro-lista/cadastro-lista.component';
+import { LoginComponent } from './components/admin/login/login.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +16,8 @@ export const routes: Routes = [
     path: '**',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./inicio/inicio.component').then((m) => m.InicioComponent),
+      import('./components/layout/inicio/inicio.component').then(
+        (m) => m.InicioComponent
+      ),
   },
 ];

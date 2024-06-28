@@ -22,7 +22,7 @@ export class AuthService {
           (u) => u.username === username && u.password === password
         );
         if (user) {
-          this.storageService.setItem('eh_logado', 'true');
+          this.storageService.setItem('eh_logado', 'true', true);
           this.storageService.setItem('userId', user.id.toString());
           this.loggedInSubject.next(true);
           return true;
@@ -35,13 +35,13 @@ export class AuthService {
   }
 
   logout(): void {
-    this.storageService.setItem('eh_logado', 'false');
+    this.storageService.setItem('eh_logado', 'false', true);
     this.storageService.removeItem('userId');
     this.loggedInSubject.next(false);
   }
 
   isLoggedIn(): boolean {
-    return this.storageService.getItem('eh_logado') === 'true';
+    return this.storageService.getItem('eh_logado', true) === 'true';
   }
 
   getLoggedInStatus(): Observable<boolean> {

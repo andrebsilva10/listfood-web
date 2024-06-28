@@ -3,9 +3,10 @@
     id="nomeLista"
     name="nomeLista"
     placeholder="Nome da Lista"
+    [(value)]="nomeLista"
     [required]="true"
-    pattern="^[a-zA-Z]{3,}$"
-    errorMessage="Deve conter pelo menos 3 letras"
+    pattern="^\s*(?:\S\s*){1,}$"
+    errorMessage="Não pode ser vazio"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,12 +25,12 @@
     id="saldoLista"
     name="saldoLista"
     placeholder="Saldo desejado"
+    [(value)]="saldoLista"
     [required]="true"
-    pattern="^[0-9]{1,}$"
+    pattern="^(?!0\d)(?:\d{1,3}(?:\.\d{3})*|\d+)(?:,\d{2})?$"
     mask="separator.2"
     [thousandSeparator]="'.'"
     [decimalMarker]="','"
-    prefix="R$ "
     [dropSpecialCharacters]="false"
     errorMessage="Deve conter pelo menos 1 número"
   >
@@ -45,6 +46,7 @@
         clip-rule="evenodd"
       />
     </svg>
+    <span class="ml-2">R$</span>
   </app-input-text>
 
   <app-button-primary text="Salvar" type="submit"></app-button-primary>
