@@ -3,15 +3,31 @@
   class="input input-sm input-bordered rounded flex items-center gap-2"
   [ngClass]="{ 'input-error': !isValid && interacted }"
 >
-  <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+  <fa-icon
+    *ngIf="icon"
+    [icon]="icon"
+    [ngClass]="{ 'text-error': !isValid && interacted }"
+  ></fa-icon>
   <span *ngIf="svgContent" [innerHTML]="svgContent"></span>
-  <span *ngIf="showCurrencyPrefix" class="mr-2">R$</span>
+  <span
+    *ngIf="showCurrencyPrefix"
+    class="mr-2 italic"
+    [ngClass]="{
+      'text-gray-500': isValid || !interacted,
+      'text-error': !isValid && interacted
+    }"
+    >R$</span
+  >
   <input
     [type]="type"
     [id]="id"
     [name]="name"
     class="grow"
     [placeholder]="placeholder"
+    [ngClass]="{
+      'placeholder-gray-500': isValid || !interacted,
+      'placeholder-error': !isValid && interacted
+    }"
     [(ngModel)]="value"
     (ngModelChange)="onValueChange($event)"
     [attr.pattern]="pattern"

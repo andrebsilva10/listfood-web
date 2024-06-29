@@ -17,7 +17,6 @@ import {
   faCity,
   faFlag,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-cadastrar-se',
@@ -28,7 +27,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     InputTextComponent,
     ButtonPrimaryComponent,
     FormComponent,
-    FontAwesomeModule,
   ],
   templateUrl: './cadastrar-se.component.html',
   styleUrls: ['./cadastrar-se.component.scss'],

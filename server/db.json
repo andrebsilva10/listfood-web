@@ -8,7 +8,7 @@
     {
       "id": "1",
       "username": "teste",
-      "password": "123",
+      "password": "senha123",
       "nome": "ANDRE BARBOZA DA SILVA",
       "cep": "85035340",
       "rua": "Rua Professora Carlita Guimarães Pupo",
@@ -20,32 +20,22 @@
       "id": "2",
       "username": "evillyn",
       "password": "teste123"
-    },
-    {
-      "id": "",
-      "nome": "Andre",
-      "username": "andre",
-      "password": "senha123",
-      "cep": "85025430",
-      "rua": "Rua Benjamin Teixeira",
-      "bairro": "Vila Bela",
-      "cidade": "Guarapuava",
-      "estado": "PR"
     }
   ],
   "listas": [
     {
+      "id": "3c85",
       "nome": "Compras de Julho",
       "saldo": 1000,
       "userId": "1",
-      "valorDisponivel": -3914,
-      "id": "3c85"
+      "valorDisponivel": 1000
     },
     {
       "id": "193e",
       "nome": "Compras para menininha",
       "saldo": 20000,
-      "userId": "2"
+      "userId": "2",
+      "valorDisponivel": -80007
     },
     {
       "id": "1dd0",
@@ -61,7 +51,7 @@
       "quantidade": 3,
       "listaId": "3c85",
       "id": "5727",
-      "selecionado": true
+      "selecionado": false
     },
     {
       "nome": "Coca",
@@ -69,7 +59,7 @@
       "quantidade": 4,
       "listaId": "3c85",
       "id": "c445",
-      "selecionado": true
+      "selecionado": false
     },
     {
       "id": "f96b",
@@ -85,7 +75,7 @@
       "valor": 231,
       "quantidade": 21,
       "listaId": "3c85",
-      "selecionado": true
+      "selecionado": false
     },
     {
       "id": "4545",
@@ -93,15 +83,7 @@
       "valor": 7,
       "quantidade": 1,
       "listaId": null,
-      "selecionado": true
-    },
-    {
-      "id": "9575",
-      "nome": "Piitizaa",
-      "valor": 20000,
-      "quantidade": 5,
-      "listaId": null,
-      "selecionado": true
+      "selecionado": false
     }
   ]
 }

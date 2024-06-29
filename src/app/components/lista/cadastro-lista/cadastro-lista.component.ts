@@ -8,6 +8,7 @@ import { ButtonPrimaryComponent } from '../../shared/button-primary/button-prima
 import { ListaService, Lista } from '../../../services/lista.service';
 import { UserService } from '../../../services/user.service';
 import { convertToNumber } from '../../../utils/number-utils';
+import { faList, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cadastro-lista',
@@ -26,6 +27,9 @@ export class CadastroListaComponent implements OnInit {
   saldoLista: string = '';
   listaId: string | null = null;
   isEditing: boolean = false;
+
+  faList = faList;
+  faDollarSign = faDollarSign;
 
   constructor(
     private listaService: ListaService,

@@ -14,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
+  isMenuOpen: boolean = false;
   private loginSubscription: Subscription | undefined;
 
   constructor(
@@ -40,5 +41,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.toastr.success('Logout realizado com sucesso!');
     this.router.navigate(['/login']);
+    this.closeMenu();
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 }

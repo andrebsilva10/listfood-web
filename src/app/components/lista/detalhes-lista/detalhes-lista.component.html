@@ -1,7 +1,21 @@
 <div class="text-start mb-20">
   <p class="font-bold text-3xl">Produtos da Lista: {{ lista?.nome }}</p>
-  <p>Saldo: R$ {{ lista?.saldo ?? 0 | currencyFormat }}</p>
-  <p>Valor disponível: R$ {{ valorDisponivel | currencyFormat }}</p>
+  <p>
+    <span class="badge badge-lg badge-outline my-5"
+      >Saldo: R$ {{ lista?.saldo ?? 0 | currencyFormat }}</span
+    >
+  </p>
+  <p>
+    <span
+      class="badge badge-lg text-base-100"
+      [ngClass]="{
+        'badge-error': valorDisponivel < 0,
+        'badge-success': valorDisponivel >= 0
+      }"
+    >
+      Valor disponível: R$ {{ valorDisponivel | currencyFormat }}
+    </span>
+  </p>
 </div>
 
 <div

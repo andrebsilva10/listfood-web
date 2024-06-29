@@ -92,6 +92,8 @@ export class DetalhesListaComponent implements OnInit {
           this.carregarProdutos(this.lista!.id!);
           this.fecharModalRemover();
           this.toastrService.success('Produto removido com sucesso');
+
+          this.calcularValorDisponivel();
         },
         (error) => {
           this.toastrService.error('Erro ao remover produto');
@@ -142,9 +144,6 @@ export class DetalhesListaComponent implements OnInit {
       this.listaService.updateLista(this.lista.id, listaAtualizada).subscribe(
         (listaAtualizada) => {
           this.listaService.atualizarListaLocal(listaAtualizada);
-          if (this.valorDisponivel < 0) {
-            this.toastrService.warning('O valor disponível está negativo!');
-          }
         },
         (error) => {
           console.error('Erro ao salvar valor disponível:', error);
@@ -170,9 +169,21 @@ export class DetalhesListaComponent implements OnInit {
   calcularValorDisponivel() {
     if (this.lista) {
       this.valorDisponivel = this.lista.saldo - this.valorTotal;
+
       if (this.valorDisponivel < 0) {
-        this.toastrService.warning('O valor disponível está negativo!');
+        if (
+          !this.toastrService.toasts.some(
+            (toast) =>
+              toast.message ===
+              'Atenção: O valor total excede o saldo disponível!'
+          )
+        ) {
+          this.toastrService.warning(
+            'Atenção: O valor total excede o saldo disponível!'
+          );
+        }
       }
+
       this.salvarValorDisponivel();
     }
   }

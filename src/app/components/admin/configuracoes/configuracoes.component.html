@@ -9,6 +9,7 @@
     name="nome"
     placeholder="Nome"
     [(value)]="nome"
+    [icon]="faUser"
   ></app-input-text>
   <app-input-text
     label="Usuário"
@@ -17,6 +18,7 @@
     name="username"
     placeholder="Usuário"
     [(value)]="username"
+    [icon]="faUserCircle"
   ></app-input-text>
   <app-input-text
     label="Senha"
@@ -25,6 +27,7 @@
     name="password"
     placeholder="Senha"
     [(value)]="password"
+    [icon]="faLock"
   ></app-input-text>
   <app-input-text
     label="Confirme sua senha"
@@ -33,6 +36,7 @@
     name="confirmPassword"
     placeholder="Confirme sua senha"
     [(value)]="confirmPassword"
+    [icon]="faLock"
   ></app-input-text>
   <app-input-text
     label="CEP"
@@ -42,6 +46,7 @@
     placeholder="CEP"
     [(value)]="cep"
     (input)="buscarEndereco()"
+    [icon]="faMapMarkerAlt"
   ></app-input-text>
   <app-input-text
     label="Rua"
@@ -51,6 +56,7 @@
     placeholder="Rua"
     [(value)]="rua"
     readonly
+    [icon]="faRoad"
   ></app-input-text>
   <app-input-text
     label="Bairro"
@@ -60,6 +66,7 @@
     placeholder="Bairro"
     [(value)]="bairro"
     readonly
+    [icon]="faMap"
   ></app-input-text>
   <app-input-text
     label="Cidade"
@@ -69,6 +76,7 @@
     placeholder="Cidade"
     [(value)]="cidade"
     readonly
+    [icon]="faCity"
   ></app-input-text>
   <app-input-text
     label="Estado"
@@ -78,6 +86,7 @@
     placeholder="Estado"
     [(value)]="estado"
     readonly
+    [icon]="faFlag"
   ></app-input-text>
   <app-button-primary text="Salvar" type="submit"></app-button-primary>
 </app-form>

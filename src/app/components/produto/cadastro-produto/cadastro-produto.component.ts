@@ -7,6 +7,11 @@ import { InputTextComponent } from '../../shared/input-text/input-text.component
 import { ButtonPrimaryComponent } from '../../shared/button-primary/button-primary.component';
 import { ProdutoService, Produto } from '../../../services/produto.service';
 import { convertToNumber } from '../../../utils/number-utils';
+import {
+  faCartPlus,
+  faDollarSign,
+  faPenToSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -27,6 +32,10 @@ export class CadastroProdutoComponent implements OnInit {
   produtoId: string | null = null;
   listaId: string | null = null;
   isEditing: boolean = false;
+
+  faPenToSquare = faPenToSquare;
+  faDollarSign = faDollarSign;
+  faCartPlus = faCartPlus;
 
   constructor(
     private produtoService: ProdutoService,

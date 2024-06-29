@@ -7,6 +7,16 @@ import { UserService } from '../../../services/user.service';
 import { ApiService } from '../../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import {
+  faUser,
+  faUserCircle,
+  faLock,
+  faMapMarkerAlt,
+  faRoad,
+  faMap,
+  faCity,
+  faFlag,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-configuracoes',
@@ -30,6 +40,15 @@ export class ConfiguracoesComponent {
   bairro: string = '';
   cidade: string = '';
   estado: string = '';
+
+  faUser = faUser;
+  faUserCircle = faUserCircle;
+  faLock = faLock;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faRoad = faRoad;
+  faMap = faMap;
+  faCity = faCity;
+  faFlag = faFlag;
 
   constructor(
     private apiService: ApiService,

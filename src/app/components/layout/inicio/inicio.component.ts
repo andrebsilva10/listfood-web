@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './inicio.component.scss',
 })
 export class InicioComponent implements OnInit {
-  username: string | null = null;
+  nome: string | null = null;
 
   constructor(
     private userService: UserService,
@@ -23,15 +23,15 @@ export class InicioComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.userService.getCurrentUser().subscribe(
         (user) => {
-          this.username = user ? user.username : null;
+          this.nome = user ? user.nome : null;
         },
         (error) => {
           console.error('Erro ao obter usuário:', error);
-          this.username = null;
+          this.nome = null;
         }
       );
     } else {
-      this.username = null;
+      this.nome = null;
     }
   }
 }
