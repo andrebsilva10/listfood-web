@@ -3,11 +3,18 @@ import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, LoginComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    LoginComponent,
+    FontAwesomeModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

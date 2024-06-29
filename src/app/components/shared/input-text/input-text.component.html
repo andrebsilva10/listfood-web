@@ -3,7 +3,9 @@
   class="input input-sm input-bordered rounded flex items-center gap-2"
   [ngClass]="{ 'input-error': !isValid && interacted }"
 >
-  <ng-content></ng-content>
+  <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+  <span *ngIf="svgContent" [innerHTML]="svgContent"></span>
+  <span *ngIf="showCurrencyPrefix" class="mr-2">R$</span>
   <input
     [type]="type"
     [id]="id"

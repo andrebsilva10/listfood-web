@@ -6,7 +6,6 @@ import { ProdutoService, Produto } from '../../../services/produto.service';
 import { ListaService, Lista } from '../../../services/lista.service';
 import { CurrencyFormatPipe } from '../../../pipes/currency-format';
 import { FormsModule } from '@angular/forms';
-import { EstadoListaService } from '../../../services/estado-lista.service';
 
 @Component({
   selector: 'app-detalhes-lista',
@@ -26,15 +25,14 @@ export class DetalhesListaComponent implements OnInit {
     private route: ActivatedRoute,
     private produtoService: ProdutoService,
     private listaService: ListaService,
-    private toastrService: ToastrService,
-    private estadoListaService: EstadoListaService
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const listaId = params['id'];
       if (listaId) {
-        const listaDoEstado = this.estadoListaService.getLista(listaId);
+        const listaDoEstado = this.listaService.getLista(listaId);
         if (listaDoEstado) {
           this.lista = listaDoEstado;
           this.valorDisponivel = this.lista.valorDisponivel ?? this.lista.saldo;
@@ -143,7 +141,7 @@ export class DetalhesListaComponent implements OnInit {
       };
       this.listaService.updateLista(this.lista.id, listaAtualizada).subscribe(
         (listaAtualizada) => {
-          this.estadoListaService.atualizarLista(listaAtualizada);
+          this.listaService.atualizarListaLocal(listaAtualizada);
           if (this.valorDisponivel < 0) {
             this.toastrService.warning('O valor disponível está negativo!');
           }

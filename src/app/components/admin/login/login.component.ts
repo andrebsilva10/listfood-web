@@ -6,6 +6,7 @@ import { InputTextComponent } from '../../shared/input-text/input-text.component
 import { ButtonPrimaryComponent } from '../../shared/button-primary/button-primary.component';
 import { FormComponent } from '../../shared/form/form.component';
 import { AuthService } from '../../../services/auth.service';
+import { faUserCircle, faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,10 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  isValid: boolean = false;
+
+  faUserCircle = faUserCircle;
+  faLock = faLock;
 
   constructor(
     private router: Router,
@@ -30,8 +35,17 @@ export class LoginComponent {
     private authService: AuthService
   ) {}
 
+  ngOnInit() {
+    this.updateValidity();
+  }
+
+  updateValidity() {
+    this.isValid =
+      this.username.trim().length >= 5 && this.password.trim().length >= 8;
+  }
+
   login() {
-    if (this.username.trim() === '' || this.password.trim() === '') {
+    if (!this.isValid) {
       this.toastr.error('Preencha os campos corretamente.');
       return;
     }

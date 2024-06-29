@@ -6,6 +6,7 @@ import { CadastroListaComponent } from './components/lista/cadastro-lista/cadast
 import { LoginComponent } from './components/admin/login/login.component';
 import { DetalhesListaComponent } from './components/lista/detalhes-lista/detalhes-lista.component';
 import { CadastroProdutoComponent } from './components/produto/cadastro-produto/cadastro-produto.component';
+import { ConfiguracoesComponent } from './components/admin/configuracoes/configuracoes.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'cadastro-lista/:id', component: CadastroListaComponent },
   { path: 'detalhes-lista/:id', component: DetalhesListaComponent },
   { path: 'cadastro-produto/:listaId', component: CadastroProdutoComponent },
+  { path: 'configuracoes', component: ConfiguracoesComponent },
   {
     path: 'cadastro-produto/:listaId/:id',
     component: CadastroProdutoComponent,

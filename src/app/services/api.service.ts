@@ -67,4 +67,12 @@ export class ApiService {
   updateProduto(id: string, produto: Produto): Observable<Produto> {
     return this.http.put<Produto>(`${this.apiUrl}/produtos/${id}`, produto);
   }
+
+  updateUser(id: string, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/${id}`, user);
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, user);
+  }
 }

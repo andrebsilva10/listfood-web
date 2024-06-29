@@ -1,0 +1,83 @@
+<app-form
+  [title]="'Configurações do Usuário'"
+  (submitEvent)="atualizarUsuario()"
+>
+  <app-input-text
+    label="Nome"
+    type="text"
+    id="nome"
+    name="nome"
+    placeholder="Nome"
+    [(value)]="nome"
+  ></app-input-text>
+  <app-input-text
+    label="Usuário"
+    type="text"
+    id="username"
+    name="username"
+    placeholder="Usuário"
+    [(value)]="username"
+  ></app-input-text>
+  <app-input-text
+    label="Senha"
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Senha"
+    [(value)]="password"
+  ></app-input-text>
+  <app-input-text
+    label="Confirme sua senha"
+    type="password"
+    id="confirmPassword"
+    name="confirmPassword"
+    placeholder="Confirme sua senha"
+    [(value)]="confirmPassword"
+  ></app-input-text>
+  <app-input-text
+    label="CEP"
+    type="text"
+    id="cep"
+    name="cep"
+    placeholder="CEP"
+    [(value)]="cep"
+    (input)="buscarEndereco()"
+  ></app-input-text>
+  <app-input-text
+    label="Rua"
+    type="text"
+    id="rua"
+    name="rua"
+    placeholder="Rua"
+    [(value)]="rua"
+    readonly
+  ></app-input-text>
+  <app-input-text
+    label="Bairro"
+    type="text"
+    id="bairro"
+    name="bairro"
+    placeholder="Bairro"
+    [(value)]="bairro"
+    readonly
+  ></app-input-text>
+  <app-input-text
+    label="Cidade"
+    type="text"
+    id="cidade"
+    name="cidade"
+    placeholder="Cidade"
+    [(value)]="cidade"
+    readonly
+  ></app-input-text>
+  <app-input-text
+    label="Estado"
+    type="text"
+    id="estado"
+    name="estado"
+    placeholder="Estado"
+    [(value)]="estado"
+    readonly
+  ></app-input-text>
+  <app-button-primary text="Salvar" type="submit"></app-button-primary>
+</app-form>

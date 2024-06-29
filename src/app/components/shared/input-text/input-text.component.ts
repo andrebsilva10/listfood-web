@@ -2,11 +2,13 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-input-text',
   standalone: true,
-  imports: [FormsModule, CommonModule, NgxMaskDirective],
+  imports: [FormsModule, CommonModule, NgxMaskDirective, FontAwesomeModule],
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss'],
 })
@@ -24,6 +26,9 @@ export class InputTextComponent implements OnInit {
   @Input() thousandSeparator: string = '';
   @Input() decimalMarker: any;
   @Input() dropSpecialCharacters: boolean = false;
+  @Input() icon?: IconDefinition;
+  @Input() svgContent?: string;
+  @Input() showCurrencyPrefix: boolean = false;
 
   @Output() valueChange = new EventEmitter<any>();
 
