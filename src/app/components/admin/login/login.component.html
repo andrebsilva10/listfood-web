@@ -1,0 +1,44 @@
+<app-form [title]="'Entrar'" (submitEvent)="login()">
+  <app-input-text
+    label="Usuário"
+    type="text"
+    id="username"
+    name="username"
+    placeholder="Usuário"
+    [(value)]="username"
+    (input)="updateValidity()"
+    pattern="^[a-zA-Z0-9_]{5,}$"
+    errorMessage="O usuário deve conter pelo menos 5 caracteres e não pode conter espaços"
+    [icon]="faUserCircle"
+  >
+  </app-input-text>
+
+  <app-input-text
+    label="Senha"
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Senha"
+    [(value)]="password"
+    (input)="updateValidity()"
+    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+    errorMessage="A senha deve conter pelo menos 8 caracteres, uma letra e um número"
+    [icon]="faLock"
+  >
+  </app-input-text>
+
+  <app-button-primary
+    text="Entrar"
+    type="submit"
+    [disabled]="!isValid"
+  ></app-button-primary>
+
+  <p class="mx-auto">
+    <span class="text-sm">
+      Não é membro?
+      <a (click)="goToSignUp()" class="cursor-pointer">
+        <strong>Cadastre-se aqui</strong>
+      </a>
+    </span>
+  </p>
+</app-form>

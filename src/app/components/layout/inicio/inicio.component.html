@@ -1,0 +1,17 @@
+<div class="text-start mb-10">
+  <p>Olá, {{ nome || "Estranho" }}!</p>
+</div>
+
+<div class="sm:flex gap-32 items-center">
+  <div class="mb-10">
+    <img src="../../assets/img/img_inicio.svg" alt="Cesta de mercado" />
+  </div>
+  <div class="flex flex-col gap-10 sm:gap-28">
+    <h1 class="font-bold text-3xl">Compras inteligentes, sem extrapolar!</h1>
+    <a
+      [routerLink]="['/listas']"
+      class="btn btn-primary text-base-100 font-bold text-lg w-full"
+      >Iniciar Compra</a
+    >
+  </div>
+</div>

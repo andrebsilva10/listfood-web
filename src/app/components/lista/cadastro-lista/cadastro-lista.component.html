@@ -1,0 +1,38 @@
+<app-form
+  [title]="isEditing ? 'Editar Lista' : 'Cadastrar Lista'"
+  (submitEvent)="salvarLista()"
+>
+  <app-input-text
+    id="nomeLista"
+    name="nomeLista"
+    placeholder="Nome da Lista"
+    [(value)]="nomeLista"
+    [required]="true"
+    pattern="^\s*(?:\S\s*){1,}$"
+    errorMessage="Não pode ser vazio"
+    [icon]="faList"
+  >
+  </app-input-text>
+
+  <app-input-text
+    type="text"
+    id="saldoLista"
+    name="saldoLista"
+    placeholder="Saldo desejado"
+    [(value)]="saldoLista"
+    [required]="true"
+    pattern="^(?!0\d)(?:\d{1,3}(?:\.\d{3})*|\d+)(?:,\d{2})?$"
+    mask="separator.2"
+    [thousandSeparator]="'.'"
+    [showCurrencyPrefix]="true"
+    [decimalMarker]="','"
+    [dropSpecialCharacters]="false"
+    errorMessage="Deve conter pelo menos 1 número"
+    [icon]="faDollarSign"
+  >
+  </app-input-text>
+  <app-button-primary
+    [text]="isEditing ? 'Atualizar' : 'Cadastrar'"
+    type="submit"
+  ></app-button-primary>
+</app-form>
