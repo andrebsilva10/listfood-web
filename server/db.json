@@ -28,7 +28,7 @@
       "nome": "Compras de Julho",
       "saldo": 1000,
       "userId": "1",
-      "valorDisponivel": -3873
+      "valorDisponivel": 1000
     },
     {
       "id": "193e",
@@ -51,7 +51,7 @@
       "quantidade": 3,
       "listaId": "3c85",
       "id": "5727",
-      "selecionado": true
+      "selecionado": false
     },
     {
       "nome": "Coca",
@@ -75,15 +75,7 @@
       "valor": 231,
       "quantidade": 21,
       "listaId": "3c85",
-      "selecionado": true
-    },
-    {
-      "id": "4545",
-      "nome": "Coca",
-      "valor": 7,
-      "quantidade": 1,
-      "listaId": null,
-      "selecionado": true
+      "selecionado": false
     }
   ]
 }
