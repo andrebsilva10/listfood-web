@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../../services/api.service';
 import { InputTextComponent } from '../../shared/input-text/input-text.component';
@@ -57,8 +57,18 @@ export class CadastrarSeComponent {
     private router: Router,
     private toastr: ToastrService,
     private apiService: ApiService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const username = params.get('username');
+      if (username) {
+        this.username = username;
+      }
+    });
+  }
 
   checkUsername(): void {
     this.apiService.getAllUsers().subscribe((users) => {
