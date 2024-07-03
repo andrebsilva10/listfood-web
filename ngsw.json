@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720049709623,
+  "timestamp": 1720050555112,
   "index": "/listfood/index.html",
   "assetGroups": [
     {
@@ -15,6 +15,7 @@
         "/listfood/favicon.ico",
         "/listfood/index.html",
         "/listfood/main.e167e35663035b38.js",
+        "/listfood/manifest.webmanifest",
         "/listfood/polyfills.7c88e12380087a62.js",
         "/listfood/runtime.8d6229f57699fe59.js",
         "/listfood/styles.5ba067e8ce4d9bbf.css"
@@ -55,6 +56,7 @@
     "/listfood/favicon.ico": "bbf1eef86c8b27e8bdcab2ea3d5a0bc9ecf27dcc",
     "/listfood/index.html": "06a830e52277144ae5755c4cd7c7a45dd341c15a",
     "/listfood/main.e167e35663035b38.js": "1be574005aacd04b5fa5724f2beed8f9cb9f691c",
+    "/listfood/manifest.webmanifest": "16b0105ccee79233e2f47205e8ee92943c14f0ee",
     "/listfood/polyfills.7c88e12380087a62.js": "989066e807a4a114c6002fa34e1d4a62f85518ca",
     "/listfood/runtime.8d6229f57699fe59.js": "1389e8fe958d0d9ad7af6d863534d4c702bd7dcc",
     "/listfood/styles.5ba067e8ce4d9bbf.css": "f4725e3c3d83c9bfe7bba4cfcd1c97156590593b"
