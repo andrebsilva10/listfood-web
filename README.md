@@ -21,3 +21,6 @@
 - [x] Formatar a apresentação de dados com Pipes.
 - [ ] Build e deploy da aplicação.
 - [ ] Fazer o PWA.
+
+Link da prototipação do projeto: https://www.figma.com/design/kLiKQYxTyBewiPZf97ebVT/Projeto-listfood?node-id=55-33
+Link ambiente de produção: https://andrebsilva10.github.io/listfood/login
