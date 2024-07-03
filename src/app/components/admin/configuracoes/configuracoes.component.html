@@ -34,11 +34,7 @@
     [(ngModel)]="password"
     (input)="validateForm()"
     pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-    [errorMessage]="
-      password && password.length > 0
-        ? 'A senha deve conter pelo menos 8 caracteres, uma letra e um número'
-        : ''
-    "
+    [errorMessage]="getPasswordErrorMessage()"
     [icon]="faLock"
   ></app-input-text>
   <app-input-text
@@ -49,9 +45,7 @@
     placeholder="Confirme sua nova senha"
     [(ngModel)]="confirmPassword"
     (input)="validateForm()"
-    [errorMessage]="
-      confirmPassword !== password ? 'As senhas não coincidem.' : ''
-    "
+    [errorMessage]="getConfirmPasswordErrorMessage()"
     [icon]="faLock"
   ></app-input-text>
   <app-input-text

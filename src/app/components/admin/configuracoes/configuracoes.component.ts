@@ -98,6 +98,20 @@ export class ConfiguracoesComponent implements OnInit {
       !!this.estado;
   }
 
+  getPasswordErrorMessage(): string {
+    if (this.password && this.password.length > 0) {
+      return 'A senha deve conter pelo menos 8 caracteres, uma letra e um número';
+    }
+    return '';
+  }
+
+  getConfirmPasswordErrorMessage(): string {
+    if (this.confirmPassword !== this.password) {
+      return 'As senhas não coincidem.';
+    }
+    return '';
+  }
+
   atualizarUsuario(): void {
     if (!this.isFormValid) {
       this.toastr.error('Preencha todos os campos corretamente.');
