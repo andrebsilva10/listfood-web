@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1720047853319,
+  "index": "/listfood/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/listfood/228.aa6479b882a20bc1.js",
+        "/listfood/favicon.ico",
+        "/listfood/index.html",
+        "/listfood/main.e167e35663035b38.js",
+        "/listfood/polyfills.7c88e12380087a62.js",
+        "/listfood/runtime.8d6229f57699fe59.js",
+        "/listfood/styles.5ba067e8ce4d9bbf.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/listfood/assets/img/img_inicio.svg",
+        "/listfood/assets/img/img_sem_listas.svg",
+        "/listfood/assets/img/img_sem_produtos.svg",
+        "/listfood/assets/img/logo-fundo-claro.png",
+        "/listfood/assets/img/logo_fundo_branco.png",
+        "/listfood/assets/img/logo_fundo_branco.svg",
+        "/listfood/assets/img/logo_fundo_preto.png",
+        "/listfood/assets/img/logo_fundo_preto.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/listfood/228.aa6479b882a20bc1.js": "71c7293386d8b3a503ca473c74d9fdf84f0b9bcf",
+    "/listfood/assets/img/img_inicio.svg": "80f11ec35ec46f6558ebfe0f5493409f2d5620dd",
+    "/listfood/assets/img/img_sem_listas.svg": "ff319c1909a03d3fe6917e39a700e7ac31e36e9b",
+    "/listfood/assets/img/img_sem_produtos.svg": "784584779228e0fdc347bd35db79edd319f3a226",
+    "/listfood/assets/img/logo-fundo-claro.png": "400fad669f5abf8f601e7bbe25d2c0dffd546bfa",
+    "/listfood/assets/img/logo_fundo_branco.png": "c63f8cf896c5a9debe5d4b68ffa3d10767ab9c90",
+    "/listfood/assets/img/logo_fundo_branco.svg": "a301cf4d38675fa5b68f41a18f104e2e80a5d37e",
+    "/listfood/assets/img/logo_fundo_preto.png": "f368ba10b41af47bbfde3857a5b921bc812255c6",
+    "/listfood/assets/img/logo_fundo_preto.svg": "891a0fd189649d25d20326a2c8816dc0dc5db1e0",
+    "/listfood/favicon.ico": "bbf1eef86c8b27e8bdcab2ea3d5a0bc9ecf27dcc",
+    "/listfood/index.html": "b2a8721e66ffed995edef9365c450e155c32df60",
+    "/listfood/main.e167e35663035b38.js": "1be574005aacd04b5fa5724f2beed8f9cb9f691c",
+    "/listfood/polyfills.7c88e12380087a62.js": "989066e807a4a114c6002fa34e1d4a62f85518ca",
+    "/listfood/runtime.8d6229f57699fe59.js": "1389e8fe958d0d9ad7af6d863534d4c702bd7dcc",
+    "/listfood/styles.5ba067e8ce4d9bbf.css": "f4725e3c3d83c9bfe7bba4cfcd1c97156590593b"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
