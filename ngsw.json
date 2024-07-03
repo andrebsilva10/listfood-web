@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720047853319,
+  "timestamp": 1720049709623,
   "index": "/listfood/index.html",
   "assetGroups": [
     {
@@ -53,7 +53,7 @@
     "/listfood/assets/img/logo_fundo_preto.png": "f368ba10b41af47bbfde3857a5b921bc812255c6",
     "/listfood/assets/img/logo_fundo_preto.svg": "891a0fd189649d25d20326a2c8816dc0dc5db1e0",
     "/listfood/favicon.ico": "bbf1eef86c8b27e8bdcab2ea3d5a0bc9ecf27dcc",
-    "/listfood/index.html": "b2a8721e66ffed995edef9365c450e155c32df60",
+    "/listfood/index.html": "06a830e52277144ae5755c4cd7c7a45dd341c15a",
     "/listfood/main.e167e35663035b38.js": "1be574005aacd04b5fa5724f2beed8f9cb9f691c",
     "/listfood/polyfills.7c88e12380087a62.js": "989066e807a4a114c6002fa34e1d4a62f85518ca",
     "/listfood/runtime.8d6229f57699fe59.js": "1389e8fe958d0d9ad7af6d863534d4c702bd7dcc",
