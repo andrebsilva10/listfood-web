@@ -8,7 +8,9 @@
     id="nome"
     name="nome"
     placeholder="Nome"
-    [(value)]="nome"
+    [(ngModel)]="nome"
+    (input)="validateForm()"
+    [errorMessage]="!nome ? 'O nome é obrigatório.' : ''"
     [icon]="faUser"
   ></app-input-text>
   <app-input-text
@@ -17,25 +19,39 @@
     id="username"
     name="username"
     placeholder="Usuário"
-    [(value)]="username"
+    [(ngModel)]="username"
+    (input)="validateForm()"
+    pattern="^[a-zA-Z0-9_]{5,}$"
+    [errorMessage]="getUsernameErrorMessage()"
     [icon]="faUserCircle"
   ></app-input-text>
   <app-input-text
-    label="Senha"
+    label="Nova Senha (opcional)"
     type="password"
     id="password"
     name="password"
-    placeholder="Senha"
-    [(value)]="password"
+    placeholder="Nova Senha"
+    [(ngModel)]="password"
+    (input)="validateForm()"
+    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+    [errorMessage]="
+      password && password.length > 0
+        ? 'A senha deve conter pelo menos 8 caracteres, uma letra e um número'
+        : ''
+    "
     [icon]="faLock"
   ></app-input-text>
   <app-input-text
-    label="Confirme sua senha"
+    label="Confirme sua nova senha"
     type="password"
     id="confirmPassword"
     name="confirmPassword"
-    placeholder="Confirme sua senha"
-    [(value)]="confirmPassword"
+    placeholder="Confirme sua nova senha"
+    [(ngModel)]="confirmPassword"
+    (input)="validateForm()"
+    [errorMessage]="
+      confirmPassword !== password ? 'As senhas não coincidem.' : ''
+    "
     [icon]="faLock"
   ></app-input-text>
   <app-input-text
@@ -44,8 +60,9 @@
     id="cep"
     name="cep"
     placeholder="CEP"
-    [(value)]="cep"
+    [(ngModel)]="cep"
     (input)="buscarEndereco()"
+    [errorMessage]="!cep ? 'O CEP é obrigatório.' : ''"
     [icon]="faMapMarkerAlt"
   ></app-input-text>
   <app-input-text
@@ -54,8 +71,9 @@
     id="rua"
     name="rua"
     placeholder="Rua"
-    [(value)]="rua"
+    [(ngModel)]="rua"
     readonly
+    [errorMessage]="!rua ? 'A rua é obrigatória.' : ''"
     [icon]="faRoad"
   ></app-input-text>
   <app-input-text
@@ -64,8 +82,9 @@
     id="bairro"
     name="bairro"
     placeholder="Bairro"
-    [(value)]="bairro"
+    [(ngModel)]="bairro"
     readonly
+    [errorMessage]="!bairro ? 'O bairro é obrigatório.' : ''"
     [icon]="faMap"
   ></app-input-text>
   <app-input-text
@@ -74,8 +93,9 @@
     id="cidade"
     name="cidade"
     placeholder="Cidade"
-    [(value)]="cidade"
+    [(ngModel)]="cidade"
     readonly
+    [errorMessage]="!cidade ? 'A cidade é obrigatória.' : ''"
     [icon]="faCity"
   ></app-input-text>
   <app-input-text
@@ -84,9 +104,14 @@
     id="estado"
     name="estado"
     placeholder="Estado"
-    [(value)]="estado"
+    [(ngModel)]="estado"
     readonly
+    [errorMessage]="!estado ? 'O estado é obrigatório.' : ''"
     [icon]="faFlag"
   ></app-input-text>
-  <app-button-primary text="Salvar" type="submit"></app-button-primary>
+  <app-button-primary
+    text="Salvar"
+    type="submit"
+    [disabled]="!isFormValid"
+  ></app-button-primary>
 </app-form>

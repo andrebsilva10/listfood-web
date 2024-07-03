@@ -1,5 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  forwardRef,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,15 +22,21 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
   imports: [FormsModule, CommonModule, NgxMaskDirective, FontAwesomeModule],
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputTextComponent),
+      multi: true,
+    },
+  ],
 })
-export class InputTextComponent implements OnInit {
+export class InputTextComponent implements OnInit, ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() id: string = '';
   @Input() name: string = '';
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
   @Input() pattern?: string;
-  @Input() value: string = '';
   @Input() errorMessage: string = '';
   @Input() mask?: string = '';
   @Input() prefix: string = '';
@@ -35,13 +52,42 @@ export class InputTextComponent implements OnInit {
   isValid: boolean = true;
   interacted: boolean = false;
 
+  private _value: string = '';
+  private onChange: (value: string) => void = () => {};
+  private onTouched: () => void = () => {};
+
   ngOnInit() {
     this.validate();
   }
 
-  onValueChange(value: any) {
-    this.value = value;
-    this.valueChange.emit(value);
+  get value(): string {
+    return this._value;
+  }
+
+  @Input()
+  set value(val: string) {
+    this._value = val;
+    this.onChange(this._value);
+  }
+
+  writeValue(value: string): void {
+    if (value !== undefined) {
+      this._value = value;
+    }
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  onValueChange(value: string): void {
+    this._value = value;
+    this.onChange(this._value);
+    this.valueChange.emit(this._value);
     this.validate();
   }
 

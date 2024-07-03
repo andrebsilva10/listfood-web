@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { FormComponent } from '../../shared/form/form.component';
-import { ButtonPrimaryComponent } from '../../shared/button-primary/button-primary.component';
-import { InputTextComponent } from '../../shared/input-text/input-text.component';
-import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../../../services/user.service';
-import { ApiService } from '../../../services/api.service';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../../../services/api.service';
+import { InputTextComponent } from '../../shared/input-text/input-text.component';
+import { ButtonPrimaryComponent } from '../../shared/button-primary/button-primary.component';
+import { FormComponent } from '../../shared/form/form.component';
 import { HttpClient } from '@angular/common/http';
 import {
   faUser,
@@ -17,20 +17,21 @@ import {
   faCity,
   faFlag,
 } from '@fortawesome/free-solid-svg-icons';
+import { User, UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-configuracoes',
   standalone: true,
   imports: [
-    FormComponent,
-    ButtonPrimaryComponent,
+    FormsModule,
     InputTextComponent,
-    RouterModule,
+    ButtonPrimaryComponent,
+    FormComponent,
   ],
   templateUrl: './configuracoes.component.html',
   styleUrls: ['./configuracoes.component.scss'],
 })
-export class ConfiguracoesComponent {
+export class ConfiguracoesComponent implements OnInit {
   nome: string = '';
   username: string = '';
   password: string = '';
@@ -40,7 +41,7 @@ export class ConfiguracoesComponent {
   bairro: string = '';
   cidade: string = '';
   estado: string = '';
-
+  isFormValid: boolean = true;
   faUser = faUser;
   faUserCircle = faUserCircle;
   faLock = faLock;
@@ -51,45 +52,86 @@ export class ConfiguracoesComponent {
   faFlag = faFlag;
 
   constructor(
-    private apiService: ApiService,
     private router: Router,
     private toastr: ToastrService,
-    private userService: UserService,
-    private http: HttpClient
+    private apiService: ApiService,
+    private http: HttpClient,
+    private userService: UserService
   ) {}
 
-  atualizarUsuario() {
-    if (this.password !== this.confirmPassword) {
-      this.toastr.error('As senhas não coincidem.');
+  ngOnInit() {
+    this.carregarDadosUsuario();
+  }
+
+  carregarDadosUsuario() {
+    this.userService.getCurrentUser().subscribe(
+      (user) => {
+        if (user) {
+          this.nome = user.nome;
+          this.username = user.username;
+          this.cep = user.cep;
+          this.rua = user.rua;
+          this.bairro = user.bairro;
+          this.cidade = user.cidade;
+          this.estado = user.estado;
+          this.validateForm();
+        } else {
+          this.toastr.error('Usuário não encontrado.');
+        }
+      },
+      (error) => {
+        this.toastr.error('Erro ao carregar dados do usuário.');
+        console.error('Erro:', error);
+      }
+    );
+  }
+
+  validateForm(): void {
+    this.isFormValid =
+      !!this.nome &&
+      !!this.username &&
+      (!!this.password ? this.password === this.confirmPassword : true) &&
+      !!this.cep &&
+      !!this.rua &&
+      !!this.bairro &&
+      !!this.cidade &&
+      !!this.estado;
+  }
+
+  atualizarUsuario(): void {
+    if (!this.isFormValid) {
+      this.toastr.error('Preencha todos os campos corretamente.');
       return;
     }
 
-    this.userService.getCurrentUser().subscribe((user) => {
-      if (user) {
-        const updatedUser = {
-          ...user,
-          nome: this.nome,
-          username: this.username,
-          password: this.password,
-          cep: this.cep,
-          rua: this.rua,
-          bairro: this.bairro,
-          cidade: this.cidade,
-          estado: this.estado,
-        };
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      this.toastr.error('Usuário não encontrado.');
+      return;
+    }
 
-        this.apiService.updateUser(user.id, updatedUser).subscribe(
-          () => {
-            this.toastr.success('Informações atualizadas com sucesso!');
-            this.router.navigate(['/home']);
-          },
-          (error) => {
-            this.toastr.error('Erro ao atualizar informações.');
-            console.error('Erro:', error);
-          }
-        );
+    const usuarioAtualizado: User = {
+      id: userId,
+      nome: this.nome,
+      username: this.username,
+      password: this.password || '',
+      cep: this.cep,
+      rua: this.rua,
+      bairro: this.bairro,
+      cidade: this.cidade,
+      estado: this.estado,
+    };
+
+    this.apiService.updateUser(userId, usuarioAtualizado).subscribe(
+      () => {
+        this.toastr.success('Usuário atualizado com sucesso!');
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.toastr.error('Erro ao atualizar usuário.');
+        console.error('Erro:', error);
       }
-    });
+    );
   }
 
   buscarEndereco() {
@@ -102,6 +144,7 @@ export class ConfiguracoesComponent {
             this.bairro = data.bairro;
             this.cidade = data.localidade;
             this.estado = data.uf;
+            this.validateForm();
           },
           (error) => {
             this.toastr.error('Erro ao buscar endereço.');
@@ -109,5 +152,14 @@ export class ConfiguracoesComponent {
           }
         );
     }
+  }
+
+  getUsernameErrorMessage(): string {
+    if (!this.username) {
+      return 'O usuário é obrigatório.';
+    } else if (!/^[a-zA-Z0-9_]{5,}$/.test(this.username)) {
+      return 'O usuário deve conter pelo menos 5 caracteres e não pode conter espaços.';
+    }
+    return '';
   }
 }
