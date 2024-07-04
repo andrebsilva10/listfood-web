@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, CurrencyFormatPipe, FormsModule],
   templateUrl: './detalhes-lista.component.html',
   styleUrls: ['./detalhes-lista.component.scss'],
+  host: {
+    class: 'w-full',
+  },
 })
 export class DetalhesListaComponent implements OnInit {
   produtos: Produto[] = [];

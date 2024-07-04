@@ -9,10 +9,10 @@
       "id": "1",
       "username": "teste",
       "password": "senha123",
-      "nome": "Andre",
-      "cep": "85000000",
-      "rua": "Rua Brasil",
-      "bairro": "Centro",
+      "nome": "ANDRE BARBOZA DA SILVA",
+      "cep": "85035340",
+      "rua": "Rua Professora Carlita Guimarães Pupo",
+      "bairro": "Bonsucesso",
       "cidade": "Guarapuava",
       "estado": "PR"
     },
@@ -23,13 +23,6 @@
     }
   ],
   "listas": [
-    {
-      "id": "3c85",
-      "nome": "Compras de Julho",
-      "saldo": 1000,
-      "userId": "1",
-      "valorDisponivel": 1000
-    },
     {
       "id": "193e",
       "nome": "Compras para menininha",
@@ -42,22 +35,21 @@
       "nome": "Lista para o menininho",
       "saldo": 10,
       "userId": "2"
+    },
+    {
+      "id": "6603",
+      "nome": "asdasda",
+      "saldo": 1000,
+      "userId": "1",
+      "valorDisponivel": 1000
     }
   ],
   "produtos": [
     {
-      "nome": "Bolacha",
-      "valor": 5,
-      "quantidade": 3,
-      "listaId": "3c85",
-      "id": "5727",
-      "selecionado": false
-    },
-    {
       "nome": "Coca",
       "valor": 12,
       "quantidade": 4,
-      "listaId": "3c85",
+      "listaId": null,
       "id": "c445",
       "selecionado": false
     },
@@ -66,7 +58,7 @@
       "nome": "Coca",
       "valor": 10,
       "quantidade": 1000,
-      "listaId": "3c85",
+      "listaId": null,
       "selecionado": false
     },
     {
@@ -74,8 +66,15 @@
       "nome": "asdasd",
       "valor": 231,
       "quantidade": 21,
-      "listaId": "3c85",
+      "listaId": null,
       "selecionado": false
+    },
+    {
+      "id": "b491",
+      "nome": "dfgdfg",
+      "valor": 560,
+      "quantidade": 23,
+      "listaId": null
     }
   ]
 }
