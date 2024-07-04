@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href=/listfood/",
+    "build": "ng build --configuration production --base-href=/listfood/ && cp src/manifest.webmanifest dist/listfood/",
     "ghpages": "npx angular-cli-ghpages --dir=dist/listfood",
     "deploy": "npm run build && npm run ghpages",
     "watch": "ng build --watch --configuration development",
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^18.0.5",
     "@angular/platform-browser-dynamic": "^18.0.5",
     "@angular/router": "^18.0.5",
+    "@angular/service-worker": "^18.0.5",
     "@fortawesome/angular-fontawesome": "^0.15.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
