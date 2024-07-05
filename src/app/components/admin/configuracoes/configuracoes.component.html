@@ -33,7 +33,6 @@
     placeholder="Nova Senha"
     [(ngModel)]="password"
     (input)="validateForm()"
-    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
     [errorMessage]="getPasswordErrorMessage()"
     [icon]="faLock"
   ></app-input-text>

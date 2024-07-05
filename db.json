@@ -7,12 +7,12 @@
     },
     {
       "id": "1",
-      "username": "teste",
+      "nome": "Andre",
+      "username": "andre",
       "password": "senha123",
-      "nome": "ANDRE BARBOZA DA SILVA",
       "cep": "85035340",
-      "rua": "Rua Professora Carlita Guimarães Pupo",
-      "bairro": "Bonsucesso",
+      "rua": "Rua Brasil",
+      "bairro": "Centro",
       "cidade": "Guarapuava",
       "estado": "PR"
     },

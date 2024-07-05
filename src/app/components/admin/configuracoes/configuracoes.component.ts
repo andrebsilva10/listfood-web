@@ -87,26 +87,40 @@ export class ConfiguracoesComponent implements OnInit {
   }
 
   validateForm(): void {
+    const senhaValida =
+      !this.password ||
+      (this.password.length >= 8 &&
+        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(this.password));
+    const senhasCoincide =
+      !this.password || this.password === this.confirmPassword;
+
     this.isFormValid =
       !!this.nome &&
       !!this.username &&
-      (!!this.password ? this.password === this.confirmPassword : true) &&
       !!this.cep &&
       !!this.rua &&
       !!this.bairro &&
       !!this.cidade &&
-      !!this.estado;
+      !!this.estado &&
+      senhaValida &&
+      senhasCoincide;
   }
 
   getPasswordErrorMessage(): string {
     if (this.password && this.password.length > 0) {
-      return 'A senha deve conter pelo menos 8 caracteres, uma letra e um número';
+      if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(this.password)) {
+        return 'A senha deve conter pelo menos 8 caracteres, uma letra e um número';
+      }
     }
     return '';
   }
 
   getConfirmPasswordErrorMessage(): string {
-    if (this.confirmPassword !== this.password) {
+    if (
+      this.password &&
+      this.confirmPassword &&
+      this.confirmPassword !== this.password
+    ) {
       return 'As senhas não coincidem.';
     }
     return '';
@@ -124,25 +138,44 @@ export class ConfiguracoesComponent implements OnInit {
       return;
     }
 
-    const usuarioAtualizado: User = {
-      id: userId,
-      nome: this.nome,
-      username: this.username,
-      password: this.password || '',
-      cep: this.cep,
-      rua: this.rua,
-      bairro: this.bairro,
-      cidade: this.cidade,
-      estado: this.estado,
-    };
+    this.userService.getCurrentUser().subscribe(
+      (currentUser) => {
+        if (currentUser) {
+          const usuarioAtualizado: User = {
+            ...currentUser,
+            nome: this.nome,
+            username: this.username,
+            cep: this.cep,
+            rua: this.rua,
+            bairro: this.bairro,
+            cidade: this.cidade,
+            estado: this.estado,
+          };
 
-    this.apiService.updateUser(userId, usuarioAtualizado).subscribe(
-      () => {
-        this.toastr.success('Usuário atualizado com sucesso!');
-        this.router.navigate(['/']);
+          if (
+            this.password &&
+            this.confirmPassword &&
+            this.password === this.confirmPassword
+          ) {
+            usuarioAtualizado.password = this.password;
+          }
+
+          this.apiService.updateUser(userId, usuarioAtualizado).subscribe(
+            () => {
+              this.toastr.success('Usuário atualizado com sucesso!');
+              this.router.navigate(['/']);
+            },
+            (error) => {
+              this.toastr.error('Erro ao atualizar usuário.');
+              console.error('Erro:', error);
+            }
+          );
+        } else {
+          this.toastr.error('Usuário não encontrado.');
+        }
       },
       (error) => {
-        this.toastr.error('Erro ao atualizar usuário.');
+        this.toastr.error('Erro ao obter dados do usuário.');
         console.error('Erro:', error);
       }
     );
