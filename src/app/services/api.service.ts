@@ -52,7 +52,7 @@ export class ApiService {
 
   getProdutosByListaId(listaId: string): Observable<Produto[]> {
     return this.http.get<Produto[]>(
-      `${this.apiUrl}/produtos?listaId=${listaId}&_sort=id`
+      `${this.apiUrl}/produtos?listaId=${listaId}`
     );
   }
 

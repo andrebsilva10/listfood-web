@@ -70,7 +70,7 @@ export class DetalhesListaComponent implements OnInit {
   carregarProdutos(listaId: string) {
     this.produtoService.getProdutosByListaId(listaId).subscribe(
       (produtos) => {
-        this.produtos = produtos;
+        this.produtos = produtos.filter((p) => p.listaId === listaId);
         this.calcularValorTotal();
       },
       (error) => {
