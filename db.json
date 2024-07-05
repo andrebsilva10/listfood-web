@@ -24,58 +24,69 @@
   ],
   "listas": [
     {
-      "id": "3c85",
-      "nome": "Compras de Julho",
-      "saldo": 1000,
-      "userId": "1",
-      "valorDisponivel": 1000
-    },
-    {
-      "id": "193e",
-      "nome": "Compras para menininha",
-      "saldo": 20000,
-      "userId": "2",
-      "valorDisponivel": -80007
-    },
-    {
-      "id": "1dd0",
-      "nome": "Lista para o menininho",
+      "id": "5a19",
+      "nome": "Lista 1 ",
       "saldo": 10,
-      "userId": "2"
+      "userId": "1",
+      "valorDisponivel": 10
+    },
+    {
+      "id": "a85c",
+      "nome": "Lista 3",
+      "saldo": 200,
+      "userId": "1",
+      "valorDisponivel": 200
+    },
+    {
+      "id": "f997",
+      "nome": "Lista 4",
+      "saldo": 10,
+      "userId": "1",
+      "valorDisponivel": 10
+    },
+    {
+      "id": "59fe",
+      "nome": "dfsdf",
+      "saldo": 4564,
+      "userId": "1",
+      "valorDisponivel": 4564
+    },
+    {
+      "id": "45f9",
+      "nome": "fsf",
+      "saldo": 44,
+      "userId": "1",
+      "valorDisponivel": 44
     }
   ],
   "produtos": [
     {
-      "nome": "Bolacha",
-      "valor": 5,
-      "quantidade": 3,
-      "listaId": "3c85",
-      "id": "5727",
-      "selecionado": false
+      "id": "4766",
+      "nome": "Produto 1",
+      "valor": 2,
+      "quantidade": 1,
+      "listaId": "5a19"
     },
     {
-      "nome": "Coca",
-      "valor": 12,
-      "quantidade": 4,
-      "listaId": "3c85",
-      "id": "c445",
-      "selecionado": false
+      "id": "20a4",
+      "nome": "Produto 2",
+      "valor": 4,
+      "quantidade": 1,
+      "listaId": "5a19"
     },
     {
-      "id": "f96b",
-      "nome": "Coca",
+      "id": "382a",
+      "nome": "Produto 3",
       "valor": 10,
-      "quantidade": 1000,
-      "listaId": "3c85",
-      "selecionado": false
+      "quantidade": 1,
+      "listaId": null
     },
     {
-      "id": "7d5d",
-      "nome": "asdasd",
-      "valor": 231,
-      "quantidade": 21,
-      "listaId": "3c85",
-      "selecionado": false
+      "id": "15b2",
+      "nome": "sdfsdf",
+      "valor": 453,
+      "quantidade": 564,
+      "listaId": "59fe"
     }
   ]
 }

@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, CurrencyFormatPipe, FormsModule],
   templateUrl: './detalhes-lista.component.html',
   styleUrls: ['./detalhes-lista.component.scss'],
+  host: {
+    class: 'w-full',
+  },
 })
 export class DetalhesListaComponent implements OnInit {
   produtos: Produto[] = [];
@@ -67,7 +70,7 @@ export class DetalhesListaComponent implements OnInit {
   carregarProdutos(listaId: string) {
     this.produtoService.getProdutosByListaId(listaId).subscribe(
       (produtos) => {
-        this.produtos = produtos;
+        this.produtos = produtos.filter((p) => p.listaId === listaId);
         this.calcularValorTotal();
       },
       (error) => {
