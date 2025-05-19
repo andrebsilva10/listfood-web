@@ -4,7 +4,7 @@ Este projeto tem como objetivo criar uma aplicação web para cadastro e gerenci
 
 ## Endereço de Deploy - GitHub Pages
 
-https://andrebsilva10.github.io/listfood/login
+https://andrebsilva10.github.io/listfood-web/login
 
 ## Protótipo
 
@@ -33,8 +33,8 @@ https://www.figma.com/design/kLiKQYxTyBewiPZf97ebVT/Projeto-listfood?node-id=55-
 - [x] Fazer o PWA.
 
 ## Manual de execução
-- Clonar o repositório com `git clone https://github.com/andrebsilva10/listfood.git`
-- Acessar o diretório do projeto com `cd listfood`
+- Clonar o repositório com `git clone https://github.com/andrebsilva10/listfood-web.git`
+- Acessar o diretório do projeto com `cd listfood-web`
 - Fazer checkout no branch `develop` que contém as modificações mais recentes
 - Abrir o projeto no editor Visual Studio Code (VS Code)
 - Abrir um terminal pelo VSCode ou qualquer terminal do seu Sistema Operacional apontando para o diretório raiz do projeto 
